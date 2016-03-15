@@ -8,7 +8,7 @@ Allow any user to easily watch movies through torrent streaming, without any pre
 
 Visit the project's website at <https://popcorntime.sh>.
 
-***
+****
 
 ## Getting Involved
 
