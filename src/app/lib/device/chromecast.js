@@ -26,7 +26,7 @@
             var subtitle = streamModel.get('subFile');
             var cover = streamModel.get('cover');
             var url = streamModel.get('src');
-            var attr= streamModel.attributes;
+            var attr = streamModel.attributes;
             this.attributes.url = url;
             var media;
 
@@ -59,15 +59,15 @@
             win.info('Chromecast: play ' + url + ' on \'' + this.get('name') + '\'');
             win.info('Chromecast: connecting to ' + this.device.host);
 
-  				self.device.play(url, media, function (err, status) {
-  					if (err) {
-  						win.error('chromecast.play error: ', err);
-  					} else {
-  						win.info('Playing ' + url + ' on ' + self.get('name'));
-  						self.set('loadedMedia', status.media);
-  					}
-  				});
-  this.device.on('status', function (status) {
+            self.device.play(url, media, function (err, status) {
+                if (err) {
+                    win.error('chromecast.play error: ', err);
+                } else {
+                    win.info('Playing ' + url + ' on ' + self.get('name'));
+                    self.set('loadedMedia', status.media);
+                }
+            });
+            this.device.on('status', function (status) {
                 self._internalStatusUpdated(status);
             });
         },
@@ -141,16 +141,16 @@
             }
             // If this is the active device, propagate the status event.
             if (collection.selected.id === this.id) {
-              console.log(status);
+                console.log(status);
                 App.vent.trigger('device:status', status);
             }
         }
     });
 
-win.info('Scanning: Local Network for Chromecast devices');
-chromecasts.update();
-chromecasts.on('update', function (player) {
-          collection.add(new Chromecast({
+    win.info('Scanning: Local Network for Chromecast devices');
+    chromecasts.update();
+    chromecasts.on('update', function (player) {
+        collection.add(new Chromecast({
             device: player
         }));
     });

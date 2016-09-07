@@ -43,18 +43,18 @@
             win.info('DLNA: play ' + url + ' on \'' + this.get('name') + '\'');
             win.info('DLNA: connecting to ' + this.player.host);
 
-            self.player.play(url_video, media , function (err, status) {
-              if (err) {
-                win.error('DLNA.play error: ', err);
-              } else {
-                win.info('Playing ' + url + ' on ' + self.get('name'));
-                self.set('loadedMedia', status.media);
-              }
+            self.player.play(url_video, media, function (err, status) {
+                if (err) {
+                    win.error('DLNA.play error: ', err);
+                } else {
+                    win.info('Playing ' + url + ' on ' + self.get('name'));
+                    self.set('loadedMedia', status.media);
+                }
             });
-    this.player.on('status', function (status) {
-                  self._internalStatusUpdated(status);
-              });
-          },
+            this.player.on('status', function (status) {
+                self._internalStatusUpdated(status);
+            });
+        },
 
         stop: function () {
             this.player.stop();
@@ -109,9 +109,9 @@
         },
 
         _internalStatusUpdated: function (status) {
-          if (status  === undefined) {
-              status = this.player._status;
-          }
+            if (status === undefined) {
+                status = this.player._status;
+            }
             // If this is the active device, propagate the status event.
             if (collection.selected.id === this.id) {
                 App.vent.trigger('device:status', status);

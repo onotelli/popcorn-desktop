@@ -12,7 +12,7 @@
         var self = this;
         ids = _.map(ids, function (id) {
             if (id) {
-              return id.toString();
+                return id.toString();
             }
         });
         var cachePromise = this.cache.getItems(ids);

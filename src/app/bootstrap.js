@@ -68,16 +68,16 @@
     }
 
     function loadNpmSettings() {
-/*	debugger;
-   	 var  settings = require('./butter-settings.js');
-	return Q(function(){Settings = _.extend(Settings, settings)});
-  
-*/
- return Q.all(loadFromPackageJSON(/popcorn-settings-/, function (settings) {
+        /*	debugger;
+           	 var  settings = require('./butter-settings.js');
+        	return Q(function(){Settings = _.extend(Settings, settings)});
+          
+        */
+        return Q.all(loadFromPackageJSON(/popcorn-settings-/, function (settings) {
             Settings = _.extend(Settings, settings);
         }));
 
-  }
+    }
 
 
     function loadProviders() {
